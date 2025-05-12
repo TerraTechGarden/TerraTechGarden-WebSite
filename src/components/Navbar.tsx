@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import { ShoppingCartOutlined, SearchOutlined, UserOutlined } from '@ant-design/icons';
@@ -7,23 +6,22 @@ import { useState, useRef } from 'react';
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null); 
   const handleNavigate = (path: string) => {
     navigate(path);
-    setIsDropdownVisible(false); // Ẩn dropdown sau khi chọn
-    if (timeoutRef.current) clearTimeout(timeoutRef.current); // Xóa timeout nếu còn
+    setIsDropdownVisible(false);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current); // Xóa timeout khi hover lại
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setIsDropdownVisible(true);
   };
 
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsDropdownVisible(false);
-    }, 300); // Độ trễ 300ms để bạn có thời gian nhấp
+    }, 300);
   };
 
   return (
@@ -59,8 +57,8 @@ const Navbar: React.FC = () => {
             {isDropdownVisible && (
               <div
                 className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10"
-                onMouseEnter={handleMouseEnter} // Giữ hiển thị khi hover vào dropdown
-                onMouseLeave={handleMouseLeave} // Ẩn khi rời khỏi dropdown
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 <ul className="py-1">
                   <li
