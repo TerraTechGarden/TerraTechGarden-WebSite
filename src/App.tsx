@@ -7,6 +7,7 @@ import Detail from './pages/User/Detail';
 import Register from './pages/User/Register';
 import BlogDetails from './pages/User/BlogDetails';
 import Checkout from './pages/User/Checkout';
+import EditProfile from './pages/User/EditProfile';
 
 const Shop = React.lazy(() => import('./pages/User/Shop'));
 const Membership = React.lazy(() => import('./pages/User/MemberShip'));
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route path="/blog/:id" element={<Suspense fallback={<div>Đang tải...</div>}><BlogDetails /></Suspense>} />
         <Route path="/about" element={<Suspense fallback={<div>Đang tải...</div>}><About /></Suspense>} />
         <Route path="/profile" element={<Suspense fallback={<div>Đang tải...</div>}><Profile /></Suspense>} />
+        <Route path="/edit-profile" element={<Suspense fallback={<div>Đang tải...</div>}><EditProfile /></Suspense>} />
         <Route path="/cart" element={<Suspense fallback={<div>Đang tải...</div>}><Cart /></Suspense>} />
         <Route path="/checkout" element={<Suspense fallback={<div>Đang tải...</div>}><Checkout /></Suspense>} />
         <Route path="/terrarium/:id" element={<Suspense fallback={<div>Đang tải...</div>}><Detail /></Suspense>} />
