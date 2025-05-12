@@ -1,12 +1,10 @@
-// pages/ManagerDashboard.tsx
-import { useNavigate } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
 const ManagerDashboard: React.FC = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
       <div className="w-64 bg-blue-50 p-4">
         <h2 className="text-xl font-bold mb-6">Manager Dashboard</h2>
         <ul className="space-y-4">
@@ -32,12 +30,10 @@ const ManagerDashboard: React.FC = () => {
           </li>
         </ul>
       </div>
-
-      {/* Nội dung chính */}
       <div className="flex-1 p-6 bg-gray-100">
         <h1 className="text-2xl font-bold mb-6">Bảng Điều Khiển Quản Lý</h1>
-        <p>Đây là giao diện riêng biệt cho quản lý, không sử dụng Navbar hoặc Footer.</p>
-        {/* Thêm các thành phần như biểu đồ doanh thu, danh sách nhân viên, v.v. */}
+        <p>Đây là giao diện riêng biệt cho quản lý</p>
+        
       </div>
     </div>
   );

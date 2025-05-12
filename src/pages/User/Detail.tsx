@@ -1,4 +1,3 @@
-// pages/Detail.tsx
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import forestImg from '../../assets/image/1.jpg';
@@ -7,14 +6,100 @@ import tropicalImg from '../../assets/image/3.jpg';
 import succulentImg from '../../assets/image/4.jpg';
 import mossyImg from '../../assets/image/5.jpg';
 import fairyImg from '../../assets/image/6.jpg';
+import TerrariumDetail from '../../components/TerrariumDetail';
+import TerrariumReviews from '../../components/TerrariumReviews'; 
 
 const terrariums = [
-  { id: '1', name: 'Forest Terrarium', price: 59, image: forestImg, description: 'A lush, green terrarium with vibrant forest plants.' },
-  { id: '2', name: 'Desert Oasis Terrarium', price: 79, image: desertImg, description: 'A serene desert-themed terrarium with cacti and sand.' },
-  { id: '3', name: 'Tropical Paradise Terrarium', price: 99, image: tropicalImg, description: 'A tropical terrarium with colorful plants and a waterfall.' },
-  { id: '4', name: 'Succulent Garden Terrarium', price: 49, image: succulentImg, description: 'A low-maintenance terrarium with various succulents.' },
-  { id: '5', name: 'Mossy World Terrarium', price: 69, image: mossyImg, description: 'A moss-filled terrarium with a mystical vibe.' },
-  { id: '6', name: 'Fairy Garden Terrarium', price: 89, image: fairyImg, description: 'A magical terrarium with fairy lights and tiny figurines.' },
+  {
+    id: '1',
+    name: 'Forest Terrarium',
+    description: 'Hệ sinh thái rừng thu nhỏ với cây xanh tươi mát.',
+    type: 'Cạn',
+    price: 1475000, // 59 USD * 25,000 VND
+    rating: 4.5,
+    purchases: 120,
+    image: forestImg,
+  },
+  {
+    id: '2',
+    name: 'Desert Oasis Terrarium',
+    description: 'Bể sa mạc với xương rồng và cát trắng tinh tế.',
+    type: 'Cạn',
+    price: 1975000, // 79 USD * 25,000 VND
+    rating: 4.0,
+    purchases: 85,
+    image: desertImg,
+  },
+  {
+    id: '3',
+    name: 'Tropical Paradise Terrarium',
+    description: 'Không gian nhiệt đới với cây cối rực rỡ.',
+    type: 'Bán Cạn',
+    price: 2475000, // 99 USD * 25,000 VND
+    rating: 4.8,
+    purchases: 150,
+    image: tropicalImg,
+  },
+  {
+    id: '4',
+    name: 'Succulent Garden Terrarium',
+    description: 'Vườn cây mọng nước dễ chăm sóc.',
+    type: 'Cạn',
+    price: 1225000, // 49 USD * 25,000 VND
+    rating: 4.2,
+    purchases: 90,
+    image: succulentImg,
+  },
+  {
+    id: '5',
+    name: 'Mossy World Terrarium',
+    description: 'Thế giới rêu xanh mát, đầy thư giãn.',
+    type: 'Bán Cạn',
+    price: 1725000, // 69 USD * 25,000 VND
+    rating: 4.3,
+    purchases: 110,
+    image: mossyImg,
+  },
+  {
+    id: '6',
+    name: 'Fairy Garden Terrarium',
+    description: 'Vườn cổ tích với ánh sáng lung linh.',
+    type: 'Cạn',
+    price: 2225000, // 89 USD * 25,000 VND
+    rating: 4.7,
+    purchases: 130,
+    image: fairyImg,
+  },
+];
+
+const reviews = [
+  {
+    id: 'r1',
+    fullName: 'Nguyen Van A',
+    avatar: 'https://i.pravatar.cc/100?img=1',
+    productImage: forestImg,
+    rating: 4.5,
+    comment: 'Sản phẩm rất đẹp, cây phát triển tốt sau 1 tháng!',
+    date: '2025-04-20',
+  },
+  {
+    id: 'r2',
+    fullName: 'Tran Thi B',
+    avatar: 'https://i.pravatar.cc/100?img=2',
+    productImage: desertImg,
+    rating: 4.0,
+    comment: 'Thiết kế độc đáo, nhưng cần hướng dẫn chăm sóc chi tiết hơn.',
+    date: '2025-04-15',
+  },
+  {
+    id: 'r3',
+    fullName: 'Le Van C',
+    avatar: 'https://i.pravatar.cc/100?img=3',
+    productImage: tropicalImg,
+    rating: 5.0,
+    comment: 'Tuyệt vời, ánh sáng và cây rất hài hòa!',
+    date: '2025-04-10',
+  },
 ];
 
 const Detail: React.FC = () => {
@@ -45,19 +130,17 @@ const Detail: React.FC = () => {
       >
         Quay lại
       </button>
-      <div className="bg-white p-6 rounded-lg shadow">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <img src={terrarium.image} alt={terrarium.name} className="w-full h-96 object-cover rounded-lg" />
-          <div>
-            <h2 className="text-3xl font-bold mb-4">{terrarium.name}</h2>
-            <p className="text-gray-600 text-xl mb-4">${terrarium.price}</p>
-            <p className="text-gray-700 mb-4">{terrarium.description}</p>
-            <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-              Thêm vào giỏ
-            </button>
-          </div>
-        </div>
-      </div>
+      <TerrariumDetail
+        id={terrarium.id}
+        name={terrarium.name}
+        description={terrarium.description}
+        type={terrarium.type}
+        price={terrarium.price}
+        rating={terrarium.rating}
+        purchases={terrarium.purchases}
+        image={terrarium.image}
+      />
+      <TerrariumReviews reviews={reviews.filter((review) => review.productImage === terrarium.image)} /> {/* Cập nhật component */}
     </div>
   );
 };

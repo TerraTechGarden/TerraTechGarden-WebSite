@@ -1,5 +1,3 @@
-
-import Layout from '../../components/Layout';
 import HeroSection from '../../components/HeroSection';
 import PopularTerrariums from '../../components/PopularTerrariums';
 import MemberBenefits from '../../components/MemberBenefits';
