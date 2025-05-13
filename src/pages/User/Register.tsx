@@ -114,24 +114,6 @@ const Register: React.FC = () => {
             >
               <DatePicker picker="year" placeholder="Chọn năm sinh" />
             </Form.Item>
-
-            {/* Địa chỉ */}
-            <Form.Item
-              label="Địa chỉ"
-              name="address"
-            >
-              <Input placeholder="Nhập địa chỉ" />
-            </Form.Item>
-
-            {/* Chọn địa chỉ trên bản đồ */}
-            <Form.Item
-              label="Chọn địa chỉ trên bản đồ"
-              name="mapLocation"
-            >
-              <Input placeholder="Chọn địa chỉ trên bản đồ" />
-              {/* Bạn có thể tích hợp bản đồ ở đây */}
-            </Form.Item>
-
             {/* Checkbox chấp nhận chính sách */}
             <Form.Item
               name="acceptTerms"
