@@ -3,10 +3,10 @@ import forestImg from '../../assets/image/1.jpg';
 import desertImg from '../../assets/image/2.jpg';
 import tropicalImg from '../../assets/image/3.jpg';
 import succulentImg from '../../assets/image/4.jpg';
-import BlogHeader from './BlogComponents/BlogHeader';
-import FeaturedPost from './BlogComponents/FeaturedPost';
-import LatestPosts from './BlogComponents/LatestPosts';
-import Categories from './BlogComponents/Categories';
+import BlogHeader from '../../components/customer/Blog/BlogHeader';
+import FeaturedPost from '../../components/customer/Blog/FeaturedPost';
+import LatestPosts from '../../components/customer/Blog/LatestPosts';
+import Categories from '../../components/customer/Blog/Categories';
 
 const blogs = [
   {

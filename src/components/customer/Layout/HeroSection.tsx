@@ -1,8 +1,7 @@
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { checkUserRole } from '../utils/auth'; 
-import forestImg from '../assets/image/1.jpg';
-
+import { checkUserRole } from '../../../utils/auth'; 
+import forestImg from '../../../assets/image/1.jpg'; 
 
 const HeroSection: React.FC = () => {
   const navigate = useNavigate();
