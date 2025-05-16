@@ -4,7 +4,7 @@ import { SearchOutlined, BellOutlined } from '@ant-design/icons';
 const AdminHeader: React.FC = () => {
   return (
     <div className="flex justify-between items-center mb-6">
-      <h1 className="text-2xl font-bold">Bảng điều khiển quản trị</h1>
+      <h1 className="text-5xl font-bold"></h1>
       <div className="flex space-x-4">
         <div className="relative">
           <input
