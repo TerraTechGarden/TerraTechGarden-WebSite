@@ -6,8 +6,8 @@ import tropicalImg from '../../assets/image/3.jpg';
 import succulentImg from '../../assets/image/4.jpg';
 import mossyImg from '../../assets/image/5.jpg';
 import fairyImg from '../../assets/image/6.jpg';
-import TerrariumDetail from '../../components/TerrariumDetail';
-import TerrariumReviews from '../../components/TerrariumReviews'; 
+import TerrariumDetail from '../../components/customer/Terrarium/TerrariumDetail';
+import TerrariumReviews from '../../components/customer/Terrarium/TerrariumReviews'; 
 
 const terrariums = [
   {
