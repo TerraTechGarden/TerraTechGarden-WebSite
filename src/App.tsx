@@ -1,6 +1,7 @@
 
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Customer/Home';
 import Layout from './components/customer/Layout/Layout';
 import Detail from './pages/Customer/Detail';
@@ -35,6 +36,7 @@ const AdminDashboard = React.lazy(() => import('./pages/Admin/AdminDashboard'));
 
 const App: React.FC = () => {
   return (
+    <>
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Suspense fallback={<div>Đang tải...</div>}><Home /></Suspense>} />
@@ -73,6 +75,18 @@ const App: React.FC = () => {
       <Route path="/manager-dashboard" element={<Suspense fallback={<div>Đang tải...</div>}><ManagerDashboard /></Suspense>} />
       
     </Routes>
+    
+    <ToastContainer
+        position="top-right" // Vị trí thông báo
+        autoClose={3000} // Tự động đóng sau 3 giây
+        hideProgressBar={false} // Hiển thị thanh tiến trình
+        newestOnTop={true} // Thông báo mới nhất ở trên
+        closeOnClick // Đóng khi nhấp vào
+        pauseOnHover // Tạm dừng khi hover
+        draggable // Có thể kéo
+        theme="light" // Chủ đề sáng
+      />
+    </>
     
   );
 };
