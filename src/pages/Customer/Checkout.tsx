@@ -1,6 +1,7 @@
 // src/pages/User/Checkout.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'; // Import toast
 
 interface CartItem {
   id: string;
@@ -14,8 +15,8 @@ interface CartItem {
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [fullName, setFullName] = useState(''); // Thêm họ và tên
-  const [phoneNumber, setPhoneNumber] = useState(''); // Thêm số điện thoại
+  const [fullName, setFullName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [address, setAddress] = useState('');
   const [savedAddresses] = useState<string[]>([
     '123 Đường ABC, Quận 1, TP.HCM',
@@ -33,6 +34,10 @@ const Checkout: React.FC = () => {
       setCartItems(selectedItems);
     } else {
       navigate('/cart');
+      toast.warn('Không có sản phẩm nào được chọn để thanh toán!', {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   }, [navigate]);
 
@@ -44,19 +49,53 @@ const Checkout: React.FC = () => {
   const applyDiscount = () => {
     if (discountCode === 'DISCOUNT10') {
       setDiscountApplied(subtotal * 0.1); // Giảm 10%
+      toast.success('Áp dụng mã giảm giá thành công! Giảm 10%.', {
+        position: "top-right",
+        autoClose: 2000,
+      });
     } else {
       setDiscountApplied(0);
-      alert('Mã giảm giá không hợp lệ!');
+      toast.error('Mã giảm giá không hợp lệ!', {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+  };
+
+  // Thay đổi hình thức thanh toán
+  const handlePaymentMethodChange = (method: 'COD' | 'Online') => {
+    setPaymentMethod(method);
+    toast.info(`Hình thức thanh toán: ${method === 'COD' ? 'Thanh toán khi nhận hàng' : 'Thanh toán online'}`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
+  };
+
+  // Chọn địa chỉ giao hàng
+  const handleAddressChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedAddress = e.target.value;
+    setAddress(selectedAddress);
+    if (selectedAddress) {
+      toast.info(`Đã chọn địa chỉ: ${selectedAddress}`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
   // Xử lý thanh toán (giả lập)
   const handlePayment = () => {
     if (!fullName || !phoneNumber || !address) {
-      alert('Vui lòng nhập đầy đủ họ tên, số điện thoại và địa chỉ!');
+      toast.error('Vui lòng nhập đầy đủ họ tên, số điện thoại và địa chỉ!', {
+        position: "top-right",
+        autoClose: 3000,
+      });
       return;
     }
-    alert('Thanh toán thành công!');
+    toast.success('Thanh toán thành công!', {
+      position: "top-right",
+      autoClose: 2000,
+    });
     localStorage.removeItem('cartItems');
     navigate('/');
   };
@@ -105,7 +144,7 @@ const Checkout: React.FC = () => {
                   type="radio"
                   value="COD"
                   checked={paymentMethod === 'COD'}
-                  onChange={() => setPaymentMethod('COD')}
+                  onChange={() => handlePaymentMethodChange('COD')}
                   className="mr-2"
                 />
                 Thanh toán khi nhận hàng (COD)
@@ -115,7 +154,7 @@ const Checkout: React.FC = () => {
                   type="radio"
                   value="Online"
                   checked={paymentMethod === 'Online'}
-                  onChange={() => setPaymentMethod('Online')}
+                  onChange={() => handlePaymentMethodChange('Online')}
                   className="mr-2"
                 />
                 Thanh toán online (Banking)
@@ -143,7 +182,7 @@ const Checkout: React.FC = () => {
               />
               <select
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={handleAddressChange}
                 className="w-full p-2 border rounded-lg mb-2"
               >
                 <option value="">Chọn địa chỉ đã lưu</option>

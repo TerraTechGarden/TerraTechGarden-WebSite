@@ -1,9 +1,9 @@
-// src/components/admin/RoleManagement.tsx
+
 import React, { useState } from 'react';
 import { EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons';
 
 interface User {
-  id: string; // Thêm ID
+  id: string; 
   name: string;
   status: string;
   createdAt: string;
@@ -17,7 +17,7 @@ interface RoleManagementProps {
 const RoleManagement: React.FC<RoleManagementProps> = ({ role, users }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // Lọc danh sách người dùng theo tên
+ 
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -27,7 +27,7 @@ const RoleManagement: React.FC<RoleManagementProps> = ({ role, users }) => {
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold text-gray-800">Quản Lý {role}</h2>
         <div className="flex space-x-3 items-center">
-          {/* Thanh tìm kiếm */}
+          
           <div className="relative">
             <input
               type="text"
@@ -46,7 +46,7 @@ const RoleManagement: React.FC<RoleManagementProps> = ({ role, users }) => {
       <table className="w-full text-left">
         <thead>
           <tr className="border-b">
-            <th className="py-2">ID</th> {/* Cột ID */}
+            <th className="py-2">ID</th> 
             <th>Tên</th>
             <th>Trạng thái</th>
             <th>Ngày tạo</th>
@@ -63,7 +63,7 @@ const RoleManagement: React.FC<RoleManagementProps> = ({ role, users }) => {
           ) : (
             filteredUsers.map((user) => (
               <tr key={user.id} className="border-b">
-                <td className="py-2">{user.id}</td> {/* Hiển thị ID */}
+                <td className="py-2">{user.id}</td> 
                 <td>{user.name}</td>
                 <td>
                   <span
