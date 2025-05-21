@@ -24,7 +24,7 @@ const EditProfile: React.FC = () => {
     console.log('Cập nhật hồ sơ:', { ...values, addresses });
     
     message.success('Cập nhật hồ sơ thành công!');
-    navigate('/profile');
+    navigate('/customer-dashboard');
   };
 
   
@@ -146,7 +146,7 @@ const EditProfile: React.FC = () => {
               </Button>
               <Button
                 className="flex-1"
-                onClick={() => navigate('/profile')}
+                onClick={() => navigate('/customer-dashboard')}
               >
                 Hủy
               </Button>

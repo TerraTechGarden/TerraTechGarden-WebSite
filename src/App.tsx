@@ -22,13 +22,23 @@ import CompletedOrders from './pages/Admin/CompletedOrders';
 import CanceledOrders from './pages/Admin/CanceledOrders';
 import RevenueReport from './pages/Admin/RevenueReport';
 import StatisticsReport from './pages/Admin/StatisticsReport';
+import Orders from './pages/Customer/Order';
+import CustomerLayout from './components/customer/Dashboard/CustomerLayout';
+import CustomerDashboard from './pages/Customer/CustomerDashboard';
+import CustomerDashboardWrapper from './components/customer/Dashboard/CustomerDashboardWrapper';
+import Notifications from './pages/Customer/Notifications';
+import Favorites from './pages/Customer/Favorites';
+import Wishlist from './pages/Customer/Wishlist';
+import SavedLayouts from './pages/Customer/SavedLayouts';
+import ChatWithStaff from './pages/Customer/ChatWithStaff';
+import MyReviews from './pages/Customer/MyReviews';
 
 const Shop = React.lazy(() => import('./pages/Customer/Shop'));
 const Membership = React.lazy(() => import('./pages/Customer/MemberShip'));
 const Blog = React.lazy(() => import('./pages/Customer/Blog'));
 const About = React.lazy(() => import('./pages/Customer/About'));
 const Login = React.lazy(() => import('./pages/Customer/Login'));
-const Profile = React.lazy(() => import('./pages/Customer/Profile'));
+
 const Cart = React.lazy(() => import('./pages/Customer/Cart'));
 const StaffDashboard = React.lazy(() => import('./pages/Staff/StaffDashboard'));
 const ManagerDashboard = React.lazy(() => import('./pages/Manager/ManagerDashboard'));
@@ -45,8 +55,19 @@ const App: React.FC = () => {
         <Route path="/blog" element={<Suspense fallback={<div>Đang tải...</div>}><Blog /></Suspense>} />
         <Route path="/blog/:id" element={<Suspense fallback={<div>Đang tải...</div>}><BlogDetails /></Suspense>} />
         <Route path="/about" element={<Suspense fallback={<div>Đang tải...</div>}><About /></Suspense>} />
-        <Route path="/profile" element={<Suspense fallback={<div>Đang tải...</div>}><Profile /></Suspense>} />
-        <Route path="/edit-profile" element={<Suspense fallback={<div>Đang tải...</div>}><EditProfile /></Suspense>} />
+       
+        
+         <Route path="/customer-dashboard" element={<CustomerDashboardWrapper />}>
+            <Route index element={<Suspense fallback={<div>Đang tải...</div>}><CustomerDashboard /></Suspense>} />
+            <Route path="orders" element={<Suspense fallback={<div>Đang tải...</div>}><Orders /></Suspense>} />
+            <Route path="notifications" element={<Suspense fallback={<div>Đang tải...</div>}><Notifications /></Suspense>} />
+            <Route path="favorites" element={<Suspense fallback={<div>Đang tải...</div>}><Favorites /></Suspense>} />
+            <Route path="wishlist" element={<Suspense fallback={<div>Đang tải...</div>}><Wishlist /></Suspense>} />
+            <Route path="layouts" element={<Suspense fallback={<div>Đang tải...</div>}><SavedLayouts /></Suspense>} />
+            <Route path="chat" element={<Suspense fallback={<div>Đang tải...</div>}><ChatWithStaff /></Suspense>} />
+            <Route path="reviews" element={<Suspense fallback={<div>Đang tải...</div>}><MyReviews /></Suspense>} />
+            <Route path="edit-profile" element={<Suspense fallback={<div>Đang tải...</div>}><EditProfile /></Suspense>} />
+          </Route>
         <Route path="/cart" element={<Suspense fallback={<div>Đang tải...</div>}><Cart /></Suspense>} />
         <Route path="/checkout" element={<Suspense fallback={<div>Đang tải...</div>}><Checkout /></Suspense>} />
         <Route path="/terrarium/:id" element={<Suspense fallback={<div>Đang tải...</div>}><Detail /></Suspense>} />
